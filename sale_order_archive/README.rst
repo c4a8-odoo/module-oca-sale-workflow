@@ -53,6 +53,9 @@ menus.
 Usage
 =====
 
+To test the module you can follow these steps or you can do the
+sale_order_archive_tour
+
 To archive sale orders, you need to:
 
 1. Open the tree view of sale orders.
@@ -92,12 +95,12 @@ Authors
 Contributors
 ------------
 
-- Andrea Stirpe <a.stirpe@onestein.nl>
-- Kinner Vachhani
-- Ruchir Shukla <ruchir@bizzappdev.com>
-- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
+-  Andrea Stirpe <a.stirpe@onestein.nl>
+-  Kinner Vachhani
+-  Ruchir Shukla <ruchir@bizzappdev.com>
+-  `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
 
-  - Bhavesh Heliconia
+   -  Bhavesh Heliconia
 
 Maintainers
 -----------
