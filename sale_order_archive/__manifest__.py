@@ -15,7 +15,7 @@
     "installable": True,
     "assets": {
         "web.assets_backend": [
-            "sale_order_archive/static/src/js/tours/sale_order_archive_tour.esm.js",
+            "sale_order_archive/static/src/js/tours/sale_order_archive_tutorial.esm.js",
         ],
     },
 }

@@ -9,5 +9,5 @@ from odoo.addons.base.tests.common import BaseCommon
 class TestSaleOrderArchiveUi(BaseCommon, HttpCase):
     def test_01_sale_tour(self):
         self.start_tour(
-            "/web", "sale_order_archive_tour", login="admin", step_delay=100
+            "/web", "sale_order_archive_tutorial", login="admin", step_delay=100
         )
