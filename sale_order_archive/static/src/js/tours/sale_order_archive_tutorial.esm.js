@@ -14,8 +14,9 @@ registry.category("web_tour.tours").add("sale_order_archive_tutorial", {
         },
         {
             trigger:
-                ".o_kanban_record:nth-child(1) .oe_kanban_action[name='button_immediate_install']",
+                ".o_kanban_record:contains('Sales') .oe_kanban_action[name='button_immediate_install']",
             run: "click",
+            timeout: 120000,
         },
         {
             content: "Open the Sales module to archive the quotation",
