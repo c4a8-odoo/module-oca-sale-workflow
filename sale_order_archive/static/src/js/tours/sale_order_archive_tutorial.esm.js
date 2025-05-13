@@ -1,4 +1,3 @@
-/** @odoo-module */
 import {registry} from "@web/core/registry";
 import {stepUtils} from "@web_tour/tour_service/tour_utils";
 
@@ -7,17 +6,6 @@ registry.category("web_tour.tours").add("sale_order_archive_tutorial", {
 
     steps: () => [
         stepUtils.showAppsMenuItem(),
-        {
-            content: "Open 'Apps' to activate the module 'Sales'",
-            trigger: ".o_app[data-menu-xmlid='base.menu_management']",
-            run: "click",
-        },
-        {
-            trigger:
-                ".o_kanban_record:contains('Sales') .oe_kanban_action[name='button_immediate_install']",
-            run: "click",
-            timeout: 120000,
-        },
         {
             content: "Open the Sales module to archive the quotation",
             trigger: ".o_app[data-menu-xmlid='sale.sale_menu_root']",
