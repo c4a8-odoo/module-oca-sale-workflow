@@ -9,14 +9,20 @@ class ProductSetLine(models.Model):
 
     discount = fields.Float(string="Discount (%)", digits="Discount", default=0.0)
 
-    def prepare_sale_order_line_values(self, order, quantity, max_sequence=0):
+    def prepare_sale_order_line_values(self, order, quantity, sequence=0):
         self.ensure_one()
+
+        if self.display_type:
+            return {"name": self.name, "display_type": self.display_type}
         return {
             "order_id": order.id,
             "product_id": self.product_id.id,
             "product_uom_qty": self.quantity * quantity,
-            "product_uom": self.product_id.uom_id.id,
-            "sequence": max_sequence + self.sequence,
+            "product_uom_id": self.uom_id.id,
+            "name": self.name
+            or self.product_id.description_sale
+            or self.product_id.name,
+            "sequence": sequence,
             "discount": self.discount,
             "company_id": self.company_id.id,
         }
