@@ -2,8 +2,10 @@ This module add sale terms and conditions templates and change existing
 terms and conditions (sale_order.note) field type from Text to Html.
 
 Users will be able to select *terms and conditions template* to fulfill
-*terms and conditions* likes in mail composer users can configure their
-template using jinja2.
+*terms and conditions*. Like in mail templates, the template text can
+reference values of the sale order: use the *Dynamic Placeholder* command
+of the editor (type `/` in the text) to pick a field, or write inline
+placeholders such as `{{ object.partner_id.name }}` by hand.
 
 ## How this module differ from [sale_comment_template](https://github.com/OCA/sale-reporting/tree/14.0/sale_comment_template)?
 

@@ -36,34 +36,60 @@ This module add sale terms and conditions templates and change existing
 terms and conditions (sale_order.note) field type from Text to Html.
 
 Users will be able to select *terms and conditions template* to fulfill
-*terms and conditions* likes in mail composer users can configure their
-template using jinja2.
+*terms and conditions*. Like in mail templates, the template text can
+reference values of the sale order: use the *Dynamic Placeholder*
+command of the editor (type ``/`` in the text) to pick a field, or write
+inline placeholders such as ``{{ object.partner_id.name }}`` by hand.
 
 How this module differ from `sale_comment_template <https://github.com/OCA/sale-reporting/tree/14.0/sale_comment_template>`__?
 ------------------------------------------------------------------------------------------------------------------------------
 
-- `base_comment_template <https://github.com/OCA/reporting-engine/tree/14.0/base_comment_template>`__
-  is for managing comments not terms, it would probably see as mess for
-  users to mixed terms and comments.
-- `sale_comment_template <https://github.com/OCA/sale-reporting/tree/14.0/sale_comment_template>`__
-  depends on
-  `account_comment_template <https://github.com/OCA/account-invoice-reporting/tree/14.0/account_comment_template>`__
-  comments are forwards to generated invoices, here we don't really
-  display sales terms on final invoices
-- `base_comment_template <https://github.com/OCA/reporting-engine/tree/14.0/base_comment_template>`__
-  at the time writing do not support template engine
+-  `base_comment_template <https://github.com/OCA/reporting-engine/tree/14.0/base_comment_template>`__
+   is for managing comments not terms, it would probably see as mess for
+   users to mixed terms and comments.
+-  `sale_comment_template <https://github.com/OCA/sale-reporting/tree/14.0/sale_comment_template>`__
+   depends on
+   `account_comment_template <https://github.com/OCA/account-invoice-reporting/tree/14.0/account_comment_template>`__
+   comments are forwards to generated invoices, here we don't really
+   display sales terms on final invoices
+-  `base_comment_template <https://github.com/OCA/reporting-engine/tree/14.0/base_comment_template>`__
+   at the time writing do not support template engine
 
 **Table of contents**
 
 .. contents::
    :local:
 
+Usage
+=====
+
+Go to *Sales > Configuration > Terms and conditions Templates* and
+create a template.
+
+To insert sale order values in the text:
+
+-  type ``/`` in the editor and choose *Dynamic Placeholder*, then pick
+   the field to insert (and optionally a default value shown when the
+   field is empty), or
+-  write inline placeholders by hand, e.g.
+   ``{{ object.client_order_ref ||| none provided }}`` or
+   ``{{ format_amount(object.amount_total, object.currency_id) }}``.
+
+Both syntaxes can be mixed in the same template. The placeholders are
+resolved when the template is selected on a quotation; the resulting
+text is stored in the quotation's *Terms and conditions* and is not
+updated afterwards.
+
+Only a few simple placeholders (order name, customer name, salesperson
+name) are allowed for every user. Templates using other expressions
+(default values, formatting helpers, computations...) can only be
+applied by users belonging to the *Mail Template Editor* group.
+
 Known issues / Roadmap
 ======================
 
-- add a post_init_hook and / or a uninstall_hook to handle correctly the
-  conversion (Text <--> Html).
-- support qweb report templating engine
+-  add a post_init_hook and / or a uninstall_hook to handle correctly
+   the conversion (Text <--> Html).
 
 Bug Tracker
 ===========
@@ -86,11 +112,11 @@ Authors
 Contributors
 ------------
 
-- Pierre Verkest pierrevkest84@gmail.com
+-  Pierre Verkest pierrevkest84@gmail.com
 
-- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
+-  `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
 
-  - Bhavesh Heliconia
+   -  Bhavesh Heliconia
 
 Maintainers
 -----------
