@@ -29,7 +29,12 @@
                     </div>
                     <notebook>
                         <page name="Terms and Conditions">
-                            <field name="text" nolabel="1" />
+                            <field name="render_model" invisible="1" />
+                            <field
+                                name="text"
+                                nolabel="1"
+                                options="{'dynamic_placeholder': true, 'dynamic_placeholder_model_reference_field': 'render_model'}"
+                            />
                         </page>
                     </notebook>
                 </sheet>
